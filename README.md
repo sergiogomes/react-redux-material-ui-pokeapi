@@ -2,6 +2,10 @@
 
 React Redux Material-Ui Pokeapi
 
+[![time tracker](https://wakatime.com/badge/github/sergiogomes/react-redux-material-ui-pokeapi.svg)](https://wakatime.com/badge/github/sergiogomes/react-redux-material-ui-pokeapi)
+
+<!-- https://wakatime.com/badge/github/sergiogomes/react-redux-material-ui-pokeapi.svg -->
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
