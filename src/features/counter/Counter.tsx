@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Button from '@material-ui/core/Button';
+import Box from '@material-ui/core/Box';
 
 import {
   decrement,
@@ -18,6 +19,7 @@ export const Counter = () => {
 
   return (
     <div>
+      <Box m={5} />
       <div className={styles.row}>
         <Button
           variant="contained" 

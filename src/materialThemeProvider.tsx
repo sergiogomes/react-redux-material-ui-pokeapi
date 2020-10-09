@@ -1,18 +1,13 @@
 import React, { ReactNode, useState } from "react";
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import CssBaseline from "@material-ui/core/CssBaseline";
-import {
-  indigo,
-  blue,
-  pink,
-  red
-} from "@material-ui/core/colors";
+import { indigo, blue, pink, red } from "@material-ui/core/colors";
 
 interface IProps {
   children: ReactNode;
 }
 
-const ReduxProvider = ({ children }: IProps) => {
+const MaterialThemeProvider = ({ children }: IProps) => {
   const [darkState] = useState(true);
 
   const palletType = darkState ? "dark" : "light";
@@ -28,10 +23,11 @@ const ReduxProvider = ({ children }: IProps) => {
       secondary: {
         main: mainSecondaryColor
       }
-    }
+    },
+    spacing: factor => `${0.25 * factor}rem`,
   });
 
   return <ThemeProvider theme={darkTheme}><CssBaseline />{children}</ThemeProvider>;
 };
 
-export default ReduxProvider;
+export default MaterialThemeProvider;
