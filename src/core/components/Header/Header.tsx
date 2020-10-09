@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -9,6 +10,8 @@ import FormGroup from '@material-ui/core/FormGroup';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
+import { setDark, setLight, selectDarkState } from "./headerSlice";
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     grow: {
@@ -18,11 +21,19 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const Header = () => {
-  const [darkState, setDarkState] = useState(true);
+  const darkState = useSelector(selectDarkState);
+  const dispatch = useDispatch();
   const classes = useStyles();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setDarkState(event.target.checked);
+    switch (event.target.checked) {
+      case true:
+        dispatch(setDark());
+        break;
+      case false:
+        dispatch(setLight());
+        break;
+    }
   };
 
   return (
