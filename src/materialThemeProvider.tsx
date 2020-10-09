@@ -1,5 +1,6 @@
 import React, { ReactNode, useState } from "react";
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import CssBaseline from "@material-ui/core/CssBaseline";
 import {
   indigo,
   blue,
@@ -17,7 +18,7 @@ const ReduxProvider = ({ children }: IProps) => {
   const palletType = darkState ? "dark" : "light";
   const mainPrimaryColor = darkState ? indigo[700] : blue[400];
   const mainSecondaryColor = darkState ? red[400] : pink[200];
-  
+
   const darkTheme = createMuiTheme({
     palette: {
       type: palletType,
@@ -30,7 +31,7 @@ const ReduxProvider = ({ children }: IProps) => {
     }
   });
 
-  return <ThemeProvider theme={darkTheme}>{children}</ThemeProvider>;
+  return <ThemeProvider theme={darkTheme}><CssBaseline />{children}</ThemeProvider>;
 };
 
 export default ReduxProvider;
