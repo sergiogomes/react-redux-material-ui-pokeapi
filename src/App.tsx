@@ -2,7 +2,7 @@ import React from "react";
 
 import logo from "./logo.svg";
 import { Counter } from "./features/counter/Counter";
-import "./App.sass";
+import "./App.scss";
 import Header from "./core/components/Header/Header"
 
 const App = () => {
