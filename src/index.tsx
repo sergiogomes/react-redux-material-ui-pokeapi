@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import "./index.scss";
+import "./index.sass";
 import App from "./App";
 import ReduxProvider from "./reduxProvider";
 import MaterialThemeProvider from "./materialThemeProvider";

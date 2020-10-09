@@ -1,6 +1,6 @@
 # react-redux-material-ui-pokeapi
 
-React Redux Material-Ui PokeAPI
+A project to work with React, Typescript, Material UI, Redux Router, Redux-Thunk, Hooks, Axios, SASS, Formik/Yup, JSON Forms Jest and Enzyme.
 
 [![time tracker](https://wakatime.com/badge/github/sergiogomes/react-redux-material-ui-pokeapi.svg)](https://wakatime.com/badge/github/sergiogomes/react-redux-material-ui-pokeapi)
 
