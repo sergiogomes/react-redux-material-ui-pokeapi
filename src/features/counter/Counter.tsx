@@ -48,7 +48,7 @@ export const Counter = () => {
         />
         <Button
           variant="contained" 
-          color="primary"
+          color="secondary"
           className={styles.button}
           onClick={() =>
             dispatch(incrementByAmount(Number(incrementAmount) || 0))
@@ -58,7 +58,7 @@ export const Counter = () => {
         </Button>
         <Button
           variant="contained" 
-          color="primary"
+          color="secondary"
           className={styles.asyncButton}
           onClick={() => dispatch(incrementAsync(Number(incrementAmount) || 0))}
         >
