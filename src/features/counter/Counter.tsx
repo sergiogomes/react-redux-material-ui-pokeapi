@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import Button from '@material-ui/core/Button';
 
 import {
   decrement,
@@ -18,21 +19,25 @@ export const Counter = () => {
   return (
     <div>
       <div className={styles.row}>
-        <button
+        <Button
+          variant="contained" 
+          color="primary"
           className={styles.button}
           aria-label="Increment value"
           onClick={() => dispatch(increment())}
         >
           +
-        </button>
+        </Button>
         <span className={styles.value}>{count}</span>
-        <button
+        <Button
+          variant="contained" 
+          color="primary"
           className={styles.button}
           aria-label="Decrement value"
           onClick={() => dispatch(decrement())}
         >
           -
-        </button>
+        </Button>
       </div>
       <div className={styles.row}>
         <input
@@ -41,20 +46,24 @@ export const Counter = () => {
           value={incrementAmount}
           onChange={(e) => setIncrementAmount(e.target.value)}
         />
-        <button
+        <Button
+          variant="contained" 
+          color="primary"
           className={styles.button}
           onClick={() =>
             dispatch(incrementByAmount(Number(incrementAmount) || 0))
           }
         >
           Add Amount
-        </button>
-        <button
+        </Button>
+        <Button
+          variant="contained" 
+          color="primary"
           className={styles.asyncButton}
           onClick={() => dispatch(incrementAsync(Number(incrementAmount) || 0))}
         >
           Add Async
-        </button>
+        </Button>
       </div>
     </div>
   );
