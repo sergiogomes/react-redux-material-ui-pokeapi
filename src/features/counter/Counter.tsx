@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import Button from '@material-ui/core/Button';
-import Box from '@material-ui/core/Box';
+import { Button, Box } from '@material-ui/core';
 
 import {
   decrement,

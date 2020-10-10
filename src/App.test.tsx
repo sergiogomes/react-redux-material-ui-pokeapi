@@ -1,15 +1,19 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { mount, ReactWrapper } from "enzyme";
 
 import App from "./App";
 import ReduxProvider from "./reduxProvider";
 
-test("renders learn react link", () => {
-  const { getByText } = render(
+let wrapped: ReactWrapper;
+
+beforeEach(() => {
+  wrapped = mount(
     <ReduxProvider>
       <App />
     </ReduxProvider>
   );
+});
 
-  expect(getByText(/learn/i)).toBeInTheDocument();
+it("renders one image", () => {
+  expect(wrapped.find("img").length).toEqual(1);
 });

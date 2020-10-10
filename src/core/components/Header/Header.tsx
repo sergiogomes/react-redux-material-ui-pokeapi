@@ -1,16 +1,18 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Switch from '@material-ui/core/Switch';
-import FormGroup from '@material-ui/core/FormGroup';
-import IconButton from '@material-ui/core/IconButton';
+import { 
+  Typography,
+  IconButton,
+  FormGroup,
+  Toolbar,
+  Switch,
+  AppBar,
+  Grid
+} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import WbSunnyIcon from '@material-ui/icons/WbSunny';
 import NightsStayIcon from '@material-ui/icons/NightsStay';
-import Grid from '@material-ui/core/Grid';
 
 import { setDark, setLight, selectDarkState } from "./headerSlice";
 
