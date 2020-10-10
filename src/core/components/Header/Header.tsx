@@ -1,18 +1,20 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import WbSunnyIcon from '@material-ui/icons/WbSunny';
+import NightsStayIcon from '@material-ui/icons/NightsStay';
+import Grid from '@material-ui/core/Grid';
 
 import { setDark, setLight, selectDarkState } from "./headerSlice";
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     grow: {
       flexGrow: 1,
@@ -46,10 +48,19 @@ const Header = () => {
           Poke API
         </Typography>
         <FormGroup>
-          <FormControlLabel
-            control={<Switch checked={darkState} onChange={handleChange} aria-label="Theme switch" />}
-            label={darkState ? 'Dark Theme' : 'Light Theme'}
-          />
+          <Typography component="div">
+            <Grid component="label" container alignItems="center" spacing={1}>
+              <Grid item><WbSunnyIcon /></Grid>
+              <Grid item>
+                <Switch
+                  checked={darkState}
+                  onChange={handleChange}
+                  name="theme"
+                  aria-label={`Theme switched to ${darkState ? "dark" : "light"}` } />
+              </Grid>
+              <Grid item><NightsStayIcon /></Grid>
+            </Grid>
+          </Typography>
         </FormGroup>
       </Toolbar>
     </AppBar>
