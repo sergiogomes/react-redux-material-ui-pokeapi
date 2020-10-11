@@ -14,7 +14,7 @@ beforeEach(() => {
   );
 });
 
-it("should contain caterpie name", () => {
+it("should contain the text wait a moment", () => {
   const text = "Wait just a moment...";
   expect(wrapped.render().text()).toContain(text);
 });

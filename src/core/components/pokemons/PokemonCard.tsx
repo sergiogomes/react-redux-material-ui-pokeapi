@@ -6,7 +6,8 @@ import { IPokemon } from "../../../interfaces/IPokemon";
 import { capitalizeFirstLetter } from "../util/capitalizeFirstLetter";
 
 type CardProps = {
-  pokemon: IPokemon
+  pokemon: IPokemon,
+  startGame: (pokemonId: number) => void
 };
 
 const useStyles = makeStyles({
@@ -15,8 +16,12 @@ const useStyles = makeStyles({
   text: { height: 45 },
 });
 
-const PokemonCard = ({pokemon}: CardProps) => {
+const PokemonCard = ({pokemon, startGame}: CardProps) => {
   const classes = useStyles();
+
+  const handleChoose = (pokemonId: number): void => {
+    startGame(pokemonId);
+  }
 
   return (
     <Card className={classes.root}>
@@ -45,8 +50,13 @@ const PokemonCard = ({pokemon}: CardProps) => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button variant="contained" size="small" color="primary">
-          Choose
+        <Button
+          onClick={() => handleChoose(pokemon.id)}
+          variant="contained"
+          color="primary"
+          size="small"
+          fullWidth>
+          {`Choose ${capitalizeFirstLetter(pokemon.name)}`}
         </Button>
       </CardActions>
     </Card>
