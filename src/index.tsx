@@ -7,12 +7,11 @@ import ReduxProvider from "./reduxProvider";
 import MaterialThemeProvider from "./materialThemeProvider";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <ReduxProvider>
-      <MaterialThemeProvider>
-        <App />
-      </MaterialThemeProvider>
-    </ReduxProvider>
-  </React.StrictMode>,
+  <ReduxProvider>
+    <MaterialThemeProvider>
+      <App />
+    </MaterialThemeProvider>
+  </ReduxProvider>
+  ,
   document.getElementById("root")
 );

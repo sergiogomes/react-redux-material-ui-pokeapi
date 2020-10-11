@@ -7,11 +7,13 @@ import Home from "./home/Home";
 import Counter from "./counter/Counter";
 import NewGame from "./newGame/NewGame";
 import Header from "../core/components/header/Header"
+import Loading from "../core/components/loading/Loading"
 
 const App = () => {
   return (
     <Router>
       <div className="App">
+        <Loading />
         <Header />
         <Container maxWidth="lg">
           <Route path="/" exact component={Home} />

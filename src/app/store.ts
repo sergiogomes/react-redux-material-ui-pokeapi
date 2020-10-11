@@ -2,11 +2,13 @@ import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 
 import counterReducer from "../pages/counter/counterSlice";
 import headerReducer from "../core/components/header/headerSlice";
+import loadingReducer from "../core/components/loading/loadingSlice";
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
     header: headerReducer,
+    loading: loadingReducer,
   },
 });
 
