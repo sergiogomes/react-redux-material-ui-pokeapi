@@ -14,6 +14,6 @@ beforeEach(() => {
   );
 });
 
-it("renders one image", () => {
-  expect(wrapped.find("img").length).toEqual(1);
+it("renders whithout crashing", () => {
+  expect(wrapped.find(".App").length).toEqual(1);
 });

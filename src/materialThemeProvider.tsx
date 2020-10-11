@@ -4,7 +4,7 @@ import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { indigo, blue, pink, red } from "@material-ui/core/colors";
 
-import { selectDarkState } from "./core/components/Header/headerSlice";
+import { selectDarkState } from "./core/components/header/headerSlice";
 
 interface IProps {
   children: ReactNode;
@@ -14,7 +14,7 @@ const MaterialThemeProvider = ({ children }: IProps) => {
   const darkState = useSelector(selectDarkState);
 
   const palletType = darkState ? "dark" : "light";
-  const mainPrimaryColor = darkState ? indigo[700] : blue[400];
+  const mainPrimaryColor = darkState ? indigo[500] : blue[400];
   const mainSecondaryColor = darkState ? red[400] : pink[200];
 
   const darkTheme = createMuiTheme({
