@@ -3,6 +3,7 @@ import React from "react";
 import { Typography, Card, CardActionArea, CardActions, CardContent, CardMedia, Button, makeStyles } from "@material-ui/core";
 
 import { IPokemon } from "../../../interfaces/IPokemon";
+import { capitalizeFirstLetter } from "../util/capitalizeFirstLetter";
 
 type CardProps = {
   pokemon: IPokemon
@@ -26,8 +27,12 @@ const PokemonCard = ({pokemon}: CardProps) => {
           title={pokemon.name}
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            {pokemon.name}
+          <Typography
+            gutterBottom
+            color="primary"
+            variant="h5"
+            component="h2">
+            {capitalizeFirstLetter(pokemon.name)}
           </Typography>
           <img src={pokemon.sprites.front_default} alt={pokemon.name} />
           <Typography

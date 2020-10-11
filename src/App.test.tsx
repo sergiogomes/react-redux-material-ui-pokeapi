@@ -14,6 +14,6 @@ beforeEach(() => {
   );
 });
 
-it("renders whithout crashing", () => {
+it("should render App whithout crashing", () => {
   expect(wrapped.find(".App").length).toEqual(1);
 });
