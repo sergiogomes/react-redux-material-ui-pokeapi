@@ -1,9 +1,11 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createStyles, makeStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom'
 import { 
+  createStyles, 
   Typography,
   IconButton,
+  makeStyles,
   FormGroup,
   Toolbar,
   Switch,
@@ -18,10 +20,8 @@ import { setDark, setLight, selectDarkState } from "./headerSlice";
 
 const useStyles = makeStyles(() =>
   createStyles({
-    grow: {
-      flexGrow: 1,
-    },
-  }),
+    grow: { flexGrow: 1 },
+  })
 );
 
 const Header = () => {
@@ -47,7 +47,9 @@ const Header = () => {
           <MenuIcon />
         </IconButton>
         <Typography variant="h6" className={classes.grow}>
-          Poke API
+          <Link to="/">
+              Poke API
+          </Link>
         </Typography>
         <FormGroup>
           <Typography component="div">

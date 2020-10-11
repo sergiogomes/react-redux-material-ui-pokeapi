@@ -4,7 +4,7 @@ import { Typography, Grid } from "@material-ui/core";
 
 import { getPokemon } from "../../core/axios/axios"
 import { IPokemon } from "../../interfaces/IPokemon";
-import PokemonCard from "../pokemons/PokemonCard";
+import PokemonCard from "../../core/components/pokemons/PokemonCard";
 
 import bulbasaurImg from "../../images/pokemons/bulbasaur.jpg";
 import charmanderImg from "../../images/pokemons/charmander.jpg";

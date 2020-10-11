@@ -10,16 +10,16 @@ import Header from "./core/components/header/Header"
 
 const App = () => {
   return (
-    <div className="App">
-      <Header />
-      <Container maxWidth="lg">
-        <Router>
+    <Router>
+      <div className="App">
+        <Header />
+        <Container maxWidth="lg">
           <Route path="/" exact component={Home} />
           <Route path="/counter" component={Counter} />
           <Route path="/newgame" component={NewGame} />
-        </Router>
-      </Container>
-    </div>
+        </Container>
+      </div>
+    </Router>
   );
 };
 

@@ -2,7 +2,7 @@
 import React from "react";
 import { Typography, Card, CardActionArea, CardActions, CardContent, CardMedia, Button, makeStyles } from "@material-ui/core";
 
-import { IPokemon } from "../../interfaces/IPokemon";
+import { IPokemon } from "../../../interfaces/IPokemon";
 
 type CardProps = {
   pokemon: IPokemon
