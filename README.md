@@ -2,6 +2,8 @@
 
 A project to work with React, Typescript, Material UI, Redux Router, Redux-Thunk, Hooks, Axios, SASS, Formik/Yup, JSON Forms Jest and Enzyme.
 
+<!-- [![Netlify Status](https://api.netlify.com/api/v1/badges/dc02fdd4-e293-465d-9b9c-2cdb64b5d3b4/deploy-status)](https://app.netlify.com/sites/pokeapigame/deploys) -->
+
 [![time tracker](https://wakatime.com/badge/github/sergiogomes/react-redux-material-ui-pokeapi.svg)](https://wakatime.com/badge/github/sergiogomes/react-redux-material-ui-pokeapi)
 
 <!-- https://wakatime.com/badge/github/sergiogomes/react-redux-material-ui-pokeapi.svg -->
