@@ -5,6 +5,8 @@ export interface IPokemon {
   name: string;
   desc: string; // not present in the pokeapi
   image: string; // not present in the pokeapi
+  experience: number; // not present in the pokeapi
+  health: number; // not present in the pokeapi
   base_experience: number;
   height: number;
   order: number;

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { 
   createStyles, 
@@ -9,15 +10,15 @@ import {
   Typography
 } from "@material-ui/core";
 
-import { ITileData } from "../../interfaces/ITileData";
+import { showLoading, hideLoading } from "../../core/components/loading/loadingSlice";
+import { addPokemon, selectMyPokemonsState } from "../myPokemons/myPokemonSlice";
+import { getPokemon } from "../../core/axios/axios";
 
-import arenaImg from "../../images/actions/arena.jpeg";
-import backpackImg from "../../images/actions/backpack.jpeg";
-import eggsImg from "../../images/actions/eggs.jpg";
-import fieldsImg from "../../images/actions/fields.jpg";
-import pokeCenterImg from "../../images/actions/pokeCenter.png";
-import pokedexImg from "../../images/actions/pokedex.png";
-import storeImg from "../../images/actions/store.png";
+import { initialTileData } from "./TileData";
+import { mapInterfaces } from "./mapInterfaces";
+import { ITileData } from "../../interfaces/ITileData";
+import { IPokemon } from "../../interfaces/IPokemon";
+import { IPokemonGrid } from "../../interfaces/IPokemonGrid";
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -27,33 +28,39 @@ const useStyles = makeStyles(() =>
       justifyContent: 'space-around',
       overflow: 'hidden',
     },
-    title: {
-      textAlign: 'center',
-      margin: 30
-    },
-    gridList: {
-      width: 730,
-    },
-    gridItem: {
-      cursor: 'pointer'
-    }
+    title: { textAlign: 'center', margin: 30 },
+    gridList: { width: 730 },
+    gridItem: { cursor: 'pointer' }
   }),
 );
-
-const initialTileData: Array<ITileData> = [
-  { id: 1, img: pokedexImg, title: "My Pokemons", subtitle: "My pokemons", page: "/mypokemons", cols: 2 },
-  { id: 2, img: pokeCenterImg, title: "Poke Center", subtitle: "Heal your pokemons", page: "/helthcenter", cols: 1 },
-  { id: 3, img: storeImg, title: "Store", subtitle: "Buy and sell items", page: "/store", cols: 1 },
-  { id: 4, img: backpackImg, title: "Backpack", subtitle: "My items", page: "/bag", cols: 1 },
-  { id: 5, img: fieldsImg, title: "Field", subtitle: "Open field", page: "/field", cols: 1 },
-  { id: 6, img: eggsImg, title: "Breeders", subtitle: "Pokemon breeders", page: "/breeders", cols: 1 },
-  { id: 7, img: arenaImg, title: "Arena", subtitle: "Battle and gain experience", page: "/arena", cols: 2 }
-];
 
 const Actions = () => {
   const [tileData] = useState<Array<ITileData>>(initialTileData);
   const [redirect, setRedirect] = useState<string>("");
+  const pokeRows = useSelector(selectMyPokemonsState);
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchPokemons = async (arr: Array<{id: number}>) => {
+      dispatch(showLoading());
+      for (const poke of arr) {
+        const pokemon: IPokemon = await getPokemon(poke.id);  
+        const pokegrid: IPokemonGrid = mapInterfaces(pokemon);
+        dispatch(addPokemon(pokegrid));
+      }
+      dispatch(hideLoading());
+    };
+    
+    const memoryStr: string = window.localStorage.getItem("Memory Card") || "";
+    if (memoryStr && pokeRows.length === 0) {
+      const memoryCard = JSON.parse(memoryStr);
+      fetchPokemons(memoryCard.pokemonList);
+    } else {
+      if (pokeRows.length > 0) return;
+      setRedirect("/newgame");  
+    }
+  }, [pokeRows, dispatch]);
 
   const handleClick = (page: string): void => {
     setRedirect(page);
