@@ -1,21 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { Typography, Grid, TextField, InputAdornment } from '@material-ui/core';
+import { Typography, Grid, InputAdornment } from '@material-ui/core';
+import { Form, Formik } from 'formik';
+import * as Yup from 'yup';
 
 import PokemonCard from '../../core/components/pokemons/PokemonCard';
 import { getPokemon } from '../../core/axios/axios';
 import { IPokemon } from '../../interfaces/IPokemon';
 import { showLoading, hideLoading } from '../../core/components/loading/loadingSlice';
+import FormikUiField from '../../core/components/formikUiField/FormikUiField';
 
 import bulbasaurImg from '../../images/pokemons/bulbasaur.jpg';
 import charmanderImg from '../../images/pokemons/charmander.jpg';
 import squirtleImg from '../../images/pokemons/squirtle.jpg';
 import SportsHandballIcon from '@material-ui/icons/SportsHandball';
 
+const initialValues: { playerName: string } = {
+  playerName: '',
+};
+
+const StartGameSchema = Yup.object().shape({
+  playerName: Yup.string().min(3, 'Too Short!').required('Required'),
+});
+
 const NewGame = (): JSX.Element => {
   const [pokemons, setPokemons] = useState<IPokemon[]>([]);
-  const [playerName, setPlayerName] = useState<string>('');
+  const [pokemonId, setPokemonId] = useState<number>(0);
   const [redirect, setRedirect] = useState<string>('');
   const dispatch = useDispatch();
 
@@ -41,11 +52,13 @@ const NewGame = (): JSX.Element => {
     fetchPokemons();
   }, [dispatch]);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setPlayerName(event.target.value);
+  const pokemonChoosen = (pokemonId: number): void => {
+    setPokemonId(pokemonId);
   };
 
-  const startGame = (pokemonId: number): void => {
+  const handleSubmit = (values: { playerName: string }): void => {
+    const playerName = values.playerName;
+
     if (!playerName || !pokemonId) {
       return;
     }
@@ -70,35 +83,39 @@ const NewGame = (): JSX.Element => {
           powerful below:
         </p>
 
-        <TextField
-          id="input-player-name"
-          name="playerName"
-          label="What is your name?"
-          placeholder="Type your name here..."
-          margin="normal"
-          color="secondary"
-          required
-          autoFocus
-          fullWidth
-          onChange={handleChange}
-          value={playerName}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <SportsHandballIcon />
-              </InputAdornment>
-            ),
-          }}
-        />
+        <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={StartGameSchema}>
+          {() => {
+            return (
+              <Form>
+                <FormikUiField
+                  name="playerName"
+                  label="What is your name?"
+                  placeholder="Type your name here..."
+                  color="secondary"
+                  required
+                  autoFocus
+                  fullWidth
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <SportsHandballIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
 
-        <Grid container spacing={3}>
-          {pokemons &&
-            pokemons.map((pokemon: IPokemon) => (
-              <Grid item sm={4} key={pokemon.id}>
-                <PokemonCard pokemon={pokemon} startGame={startGame} />
-              </Grid>
-            ))}
-        </Grid>
+                <Grid container spacing={3}>
+                  {pokemons &&
+                    pokemons.map((pokemon: IPokemon) => (
+                      <Grid item sm={4} key={pokemon.id}>
+                        <PokemonCard pokemon={pokemon} pokemonChoosen={pokemonChoosen} />
+                      </Grid>
+                    ))}
+                </Grid>
+              </Form>
+            );
+          }}
+        </Formik>
       </div>
     );
   }

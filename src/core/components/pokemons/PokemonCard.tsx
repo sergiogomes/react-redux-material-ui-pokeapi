@@ -15,7 +15,7 @@ import { capitalizeFirstLetter } from '../util/capitalizeFirstLetter';
 
 type CardProps = {
   pokemon: IPokemon;
-  startGame: (pokemonId: number) => void;
+  pokemonChoosen: (pokemonId: number) => void;
 };
 
 const useStyles = makeStyles({
@@ -24,11 +24,11 @@ const useStyles = makeStyles({
   text: { height: 45 },
 });
 
-const PokemonCard = ({ pokemon, startGame }: CardProps): JSX.Element => {
+const PokemonCard = ({ pokemon, pokemonChoosen }: CardProps): JSX.Element => {
   const classes = useStyles();
 
   const handleChoose = (pokemonId: number): void => {
-    startGame(pokemonId);
+    pokemonChoosen(pokemonId);
   };
 
   return (
@@ -46,7 +46,14 @@ const PokemonCard = ({ pokemon, startGame }: CardProps): JSX.Element => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button onClick={() => handleChoose(pokemon.id)} variant="contained" color="primary" size="small" fullWidth>
+        <Button
+          onClick={() => handleChoose(pokemon.id)}
+          variant="contained"
+          color="primary"
+          size="small"
+          type="submit"
+          fullWidth
+        >
           {`Choose ${capitalizeFirstLetter(pokemon.name)}`}
         </Button>
       </CardActions>
