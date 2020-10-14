@@ -1,9 +1,9 @@
-import React from "react";
-import { mount, ReactWrapper } from "enzyme";
-import { BrowserRouter as Router } from 'react-router-dom'
+import React from 'react';
+import { mount, ReactWrapper } from 'enzyme';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-import Home from "./Home";
-import ReduxProvider from "../../reduxProvider";
+import Home from './Home';
+import ReduxProvider from '../../reduxProvider';
 
 let wrapped: ReactWrapper;
 
@@ -13,10 +13,10 @@ beforeEach(() => {
       <Router>
         <Home />
       </Router>
-    </ReduxProvider>
+    </ReduxProvider>,
   );
 });
 
-it("should render two buttons", () => {
-  expect(wrapped.find("button").length).toEqual(2);
+it('should render two buttons', () => {
+  expect(wrapped.find('button').length).toEqual(2);
 });

@@ -1,8 +1,8 @@
-import React from "react";
-import { mount, ReactWrapper } from "enzyme";
+import React from 'react';
+import { mount, ReactWrapper } from 'enzyme';
 
-import App from "./App";
-import ReduxProvider from "../reduxProvider";
+import App from './App';
+import ReduxProvider from '../reduxProvider';
 
 let wrapped: ReactWrapper;
 
@@ -10,10 +10,10 @@ beforeEach(() => {
   wrapped = mount(
     <ReduxProvider>
       <App />
-    </ReduxProvider>
+    </ReduxProvider>,
   );
 });
 
-it("should render App whithout crashing", () => {
-  expect(wrapped.find(".App").length).toEqual(1);
+it('should render App whithout crashing', () => {
+  expect(wrapped.find('.App').length).toEqual(1);
 });

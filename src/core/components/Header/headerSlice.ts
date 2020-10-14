@@ -1,6 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
-import { RootState } from "../../../app/store";
+import { RootState } from '../../../app/store';
 
 interface HeaderState {
   darkState: boolean;
@@ -11,7 +11,7 @@ const initialState: HeaderState = {
 };
 
 export const headerSlice = createSlice({
-  name: "header",
+  name: 'header',
   initialState,
   reducers: {
     setDark: (state) => {
@@ -25,6 +25,6 @@ export const headerSlice = createSlice({
 
 export const { setDark, setLight } = headerSlice.actions;
 
-export const selectDarkState = (state: RootState) => state.header.darkState;
+export const selectDarkState = (state: RootState): boolean => state.header.darkState;
 
 export default headerSlice.reducer;

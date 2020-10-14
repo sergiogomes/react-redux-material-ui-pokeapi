@@ -1,5 +1,5 @@
-import { IPokemon } from "../../interfaces/IPokemon";
-import { IPokemonGrid } from "../../interfaces/IPokemonGrid";
+import { IPokemon } from '../../interfaces/IPokemon';
+import { IPokemonGrid } from '../../interfaces/IPokemonGrid';
 
 export const mapInterfaces = (pokemon: IPokemon): IPokemonGrid => {
   const pokegrid: IPokemonGrid = {
@@ -14,31 +14,31 @@ export const mapInterfaces = (pokemon: IPokemon): IPokemonGrid => {
     specialAttack: 0,
     specialDefense: 0,
     speed: 0,
-  }
+  };
 
   for (const pokeStat of pokemon.stats) {
     switch (pokeStat.stat.name) {
-      case "hp":
+      case 'hp':
         pokegrid.hp = pokeStat.base_stat;
         pokegrid.health = pokeStat.base_stat;
-        break
-      case "attack":
+        break;
+      case 'attack':
         pokegrid.attack = pokeStat.base_stat;
-        break
-      case "defense":
+        break;
+      case 'defense':
         pokegrid.defense = pokeStat.base_stat;
-        break
-      case "special-attack":
+        break;
+      case 'special-attack':
         pokegrid.specialAttack = pokeStat.base_stat;
-        break
-      case "special-defense":
+        break;
+      case 'special-defense':
         pokegrid.specialDefense = pokeStat.base_stat;
-        break
-      case "speed":
+        break;
+      case 'speed':
         pokegrid.speed = pokeStat.base_stat;
-      break
+        break;
     }
   }
-  
+
   return pokegrid;
-}
+};

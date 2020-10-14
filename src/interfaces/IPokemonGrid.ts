@@ -10,4 +10,4 @@ export interface IPokemonGrid {
   specialAttack: number;
   specialDefense: number;
   speed: number;
-};
+}

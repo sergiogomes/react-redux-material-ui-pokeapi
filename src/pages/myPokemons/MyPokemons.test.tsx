@@ -1,9 +1,9 @@
-import React from "react";
-import { mount, ReactWrapper } from "enzyme";
-import { BrowserRouter as Router } from 'react-router-dom'
+import React from 'react';
+import { mount, ReactWrapper } from 'enzyme';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-import MyPokemons from "./MyPokemons";
-import ReduxProvider from "../../reduxProvider";
+import MyPokemons from './MyPokemons';
+import ReduxProvider from '../../reduxProvider';
 
 let wrapped: ReactWrapper;
 
@@ -13,11 +13,11 @@ beforeEach(() => {
       <Router>
         <MyPokemons />
       </Router>
-    </ReduxProvider>
+    </ReduxProvider>,
   );
 });
 
-it("should contain the title my pokemons", () => {
-  const title = "My Pokemons";
+it('should contain the title my pokemons', () => {
+  const title = 'My Pokemons';
   expect(wrapped.render().text()).toContain(title);
 });

@@ -4,6 +4,7 @@ A project to work with React, Typescript, Material UI, Redux Router, Redux-Thunk
 
 <!-- [![Netlify Status](https://api.netlify.com/api/v1/badges/dc02fdd4-e293-465d-9b9c-2cdb64b5d3b4/deploy-status)](https://app.netlify.com/sites/pokeapigame/deploys) -->
 
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![time tracker](https://wakatime.com/badge/github/sergiogomes/react-redux-material-ui-pokeapi.svg)](https://wakatime.com/badge/github/sergiogomes/react-redux-material-ui-pokeapi)
 
 <!-- https://wakatime.com/badge/github/sergiogomes/react-redux-material-ui-pokeapi.svg -->

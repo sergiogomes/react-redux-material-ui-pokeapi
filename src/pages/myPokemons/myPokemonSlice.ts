@@ -1,10 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
-import { RootState } from "../../app/store";
-import { IPokemonGrid } from "../../interfaces/IPokemonGrid";
+import { RootState } from '../../app/store';
+import { IPokemonGrid } from '../../interfaces/IPokemonGrid';
 
 interface MyPokemonsState {
-  myPokemonsState: Array<IPokemonGrid>;
+  myPokemonsState: IPokemonGrid[];
 }
 
 const initialState: MyPokemonsState = {
@@ -12,7 +12,7 @@ const initialState: MyPokemonsState = {
 };
 
 export const myPokemonsSlice = createSlice({
-  name: "myPokemons",
+  name: 'myPokemons',
   initialState,
   reducers: {
     addPokemon: (state, action) => {
@@ -26,6 +26,6 @@ export const myPokemonsSlice = createSlice({
 
 export const { addPokemon } = myPokemonsSlice.actions;
 
-export const selectMyPokemonsState = (state: RootState) => state.myPokemons.myPokemonsState;
+export const selectMyPokemonsState = (state: RootState): IPokemonGrid[] => state.myPokemons.myPokemonsState;
 
 export default myPokemonsSlice.reducer;

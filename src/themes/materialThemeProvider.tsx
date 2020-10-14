@@ -1,19 +1,19 @@
-import React, { ReactNode } from "react";
-import { useSelector } from "react-redux";
+import React, { ReactNode } from 'react';
+import { useSelector } from 'react-redux';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import CssBaseline from "@material-ui/core/CssBaseline";
-import { indigo, blue, pink, red } from "@material-ui/core/colors";
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { indigo, blue, pink, red } from '@material-ui/core/colors';
 
-import { selectDarkState } from "../core/components/header/headerSlice";
+import { selectDarkState } from '../core/components/header/headerSlice';
 
 interface IProps {
   children: ReactNode;
 }
 
-const MaterialThemeProvider = ({ children }: IProps) => {
+const MaterialThemeProvider = ({ children }: IProps): JSX.Element => {
   const darkState = useSelector(selectDarkState);
 
-  const palletType = darkState ? "dark" : "light";
+  const palletType = darkState ? 'dark' : 'light';
   const mainPrimaryColor = darkState ? indigo[500] : blue[400];
   const mainSecondaryColor = darkState ? red[400] : pink[200];
 
@@ -21,16 +21,21 @@ const MaterialThemeProvider = ({ children }: IProps) => {
     palette: {
       type: palletType,
       primary: {
-        main: mainPrimaryColor
+        main: mainPrimaryColor,
       },
       secondary: {
-        main: mainSecondaryColor
-      }
+        main: mainSecondaryColor,
+      },
     },
-    spacing: factor => `${0.25 * factor}rem`,
+    spacing: (factor) => `${0.25 * factor}rem`,
   });
 
-  return <ThemeProvider theme={darkTheme}><CssBaseline />{children}</ThemeProvider>;
+  return (
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
+      {children}
+    </ThemeProvider>
+  );
 };
 
 export default MaterialThemeProvider;

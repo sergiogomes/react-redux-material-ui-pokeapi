@@ -1,5 +1,3 @@
-import { Url } from "url";
-
 export interface IPokemon {
   id: number;
   name: string;
@@ -13,11 +11,11 @@ export interface IPokemon {
   weight: number;
   is_default: boolean;
   location_area_encounters: string;
-  abilities: Array<ability>;
-  forms: Array<nameUrl>;
-  game_indices: Array<game_indice>;
-  held_items: Array<any>;
-  moves: Array<move>;
+  abilities: ability[];
+  forms: nameUrl[];
+  game_indices: game_indice[];
+  held_items: unknown[];
+  moves: move[];
   species: nameUrl;
   sprites: {
     back_default: string;
@@ -29,44 +27,44 @@ export interface IPokemon {
     front_shiny: string;
     front_shiny_female: string;
   };
-  stats: Array<stat>;
-  types: Array<type>;
-};
+  stats: stat[];
+  types: type[];
+}
 
 type nameUrl = {
   name: string;
   url: string;
-}
+};
 
 type ability = {
   ability: nameUrl;
   is_hidden: boolean;
   slot: number;
-}
+};
 
 type game_indice = {
   game_index: number;
   version: nameUrl;
-}
+};
 
 type move = {
   move: nameUrl;
-  version_group_details: Array<version_group_detail>;
-}
+  version_group_details: version_group_detail[];
+};
 
 type version_group_detail = {
   level_learned_at: number;
   move_learn_method: nameUrl;
   version_group: nameUrl;
-}
+};
 
 type stat = {
   base_stat: number;
   effort: number;
   stat: nameUrl;
-}
+};
 
 type type = {
   slot: number;
   type: nameUrl;
-}
+};

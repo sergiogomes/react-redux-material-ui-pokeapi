@@ -1,27 +1,21 @@
-import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Button, Box } from '@material-ui/core';
 
-import {
-  decrement,
-  increment,
-  incrementByAmount,
-  incrementAsync,
-  selectCount,
-} from "./counterSlice";
-import styles from "./Counter.module.scss";
+import { decrement, increment, incrementByAmount, incrementAsync, selectCount } from './counterSlice';
+import styles from './Counter.module.scss';
 
-const Counter = () => {
+const Counter = (): JSX.Element => {
   const count = useSelector(selectCount);
   const dispatch = useDispatch();
-  const [incrementAmount, setIncrementAmount] = useState("2");
+  const [incrementAmount, setIncrementAmount] = useState('2');
 
   return (
     <div>
       <Box m={5} />
       <div className={styles.row}>
         <Button
-          variant="contained" 
+          variant="contained"
           color="primary"
           className={styles.button}
           aria-label="Increment value"
@@ -31,7 +25,7 @@ const Counter = () => {
         </Button>
         <span className={styles.value}>{count}</span>
         <Button
-          variant="contained" 
+          variant="contained"
           color="primary"
           className={styles.button}
           aria-label="Decrement value"
@@ -48,17 +42,15 @@ const Counter = () => {
           onChange={(e) => setIncrementAmount(e.target.value)}
         />
         <Button
-          variant="contained" 
+          variant="contained"
           color="secondary"
           className={styles.button}
-          onClick={() =>
-            dispatch(incrementByAmount(Number(incrementAmount) || 0))
-          }
+          onClick={() => dispatch(incrementByAmount(Number(incrementAmount) || 0))}
         >
           Add Amount
         </Button>
         <Button
-          variant="contained" 
+          variant="contained"
           color="secondary"
           className={styles.asyncButton}
           onClick={() => dispatch(incrementAsync(Number(incrementAmount) || 0))}

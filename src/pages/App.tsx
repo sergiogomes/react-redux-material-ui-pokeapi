@@ -1,17 +1,17 @@
-import React from "react";
+import React from 'react';
 import Container from '@material-ui/core/Container';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import "./App.scss";
-import Home from "./home/Home";
-import Counter from "./counter/Counter";
-import NewGame from "./newGame/NewGame";
-import Actions from "./actions/Actions";
-import MyPokemons from "./myPokemons/MyPokemons";
-import Header from "../core/components/header/Header"
-import Loading from "../core/components/loading/Loading"
+import './App.scss';
+import Home from './home/Home';
+import Counter from './counter/Counter';
+import NewGame from './newGame/NewGame';
+import Actions from './actions/Actions';
+import MyPokemons from './myPokemons/MyPokemons';
+import Header from '../core/components/header/Header';
+import Loading from '../core/components/loading/Loading';
 
-const App = () => {
+const App = (): JSX.Element => {
   return (
     <Router>
       <div className="App">

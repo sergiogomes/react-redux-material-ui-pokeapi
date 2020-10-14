@@ -1,4 +1,3 @@
-
 $legacy_support_for_ie: false !default;
 
 $normalized_font_family: sans-serif !default;
@@ -51,7 +50,8 @@ audio:not([controls]) {
   height: 0;
 }
 
-[hidden], template {
+[hidden],
+template {
   display: none;
 }
 
@@ -78,13 +78,12 @@ body {
 }
 
 a {
-  
   background: transparent;
-  
+
   &:focus {
     outline: thin dotted;
   }
-  
+
   &:hover,
   &:active {
     outline: 0;
@@ -96,27 +95,27 @@ a {
     font-size: $h1_font_size;
     margin: $h1_margin;
   }
-  
+
   h2 {
     font-size: $h2_font_size;
     margin: $h2_margin;
   }
-  
+
   h3 {
     font-size: $h3_font_size;
     margin: $h3_margin;
   }
-  
+
   h4 {
     font-size: $h4_font_size;
     margin: $h4_margin;
   }
-  
+
   h5 {
     font-size: $h5_font_size;
     margin: $h5_margin;
   }
-  
+
   h6 {
     font-size: $h6_font_size;
     margin: $h6_margin;
@@ -172,7 +171,7 @@ pre {
 }
 
 q {
-  quotes: "\201C" "\201D" "\2018" "\2019";
+  quotes: '\201C''\201D''\2018''\2019';
 }
 
 @if $legacy_support_for_ie {
@@ -182,10 +181,10 @@ q {
 }
 
 q {
-  &:before, 
+  &:before,
   &:after {
     content: '';
-    content: none;	
+    content: none;
   }
 }
 
@@ -208,7 +207,6 @@ sup {
 sub {
   bottom: -0.25em;
 }
-
 
 @if $legacy_support_for_ie {
   dl,
@@ -291,7 +289,8 @@ textarea {
   }
 }
 
-button, input {
+button,
+input {
   line-height: normal;
 }
 
@@ -301,13 +300,13 @@ select {
 }
 
 button,
-html input[type="button"],
-input[type="reset"],
-input[type="submit"] {
+html input[type='button'],
+input[type='reset'],
+input[type='submit'] {
   -webkit-appearance: button;
   cursor: pointer;
   @if $legacy_support_for_ie {
-    *overflow: visible; 
+    *overflow: visible;
   }
 }
 
@@ -316,7 +315,8 @@ input[disabled] {
   cursor: default;
 }
 
-button, input {
+button,
+input {
   &::-moz-focus-inner {
     border: 0;
     padding: 0;
@@ -333,21 +333,21 @@ table {
   border-spacing: 0;
 }
 
-input {  
-  &[type="search"] {
+input {
+  &[type='search'] {
     -webkit-appearance: textfield;
     -moz-box-sizing: content-box;
     -webkit-box-sizing: content-box;
     box-sizing: content-box;
-    
+
     &::-webkit-search-cancel-button,
     &::-webkit-search-decoration {
       -webkit-appearance: none;
     }
   }
-  
-  &[type="checkbox"],
-  &[type="radio"] {
+
+  &[type='checkbox'],
+  &[type='radio'] {
     box-sizing: border-box;
     padding: 0;
     @if $legacy_support_for_ie {

@@ -1,9 +1,9 @@
-import React from "react";
-import { mount, ReactWrapper } from "enzyme";
-import { BrowserRouter as Router } from 'react-router-dom'
+import React from 'react';
+import { mount, ReactWrapper } from 'enzyme';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-import Actions from "./Actions";
-import ReduxProvider from "../../reduxProvider";
+import Actions from './Actions';
+import ReduxProvider from '../../reduxProvider';
 
 let wrapped: ReactWrapper;
 
@@ -13,11 +13,11 @@ beforeEach(() => {
       <Router>
         <Actions />
       </Router>
-    </ReduxProvider>
+    </ReduxProvider>,
   );
 });
 
-it("should contain the question what are you going to do next?", () => {
-  const question = "What are you going to do next?";
+it('should contain the question what are you going to do next?', () => {
+  const question = 'What are you going to do next?';
   expect(wrapped.render().text()).toContain(question);
 });

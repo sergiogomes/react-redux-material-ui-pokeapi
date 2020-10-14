@@ -1,24 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
-import { 
-  createStyles, 
-  GridList, 
-  GridListTile, 
-  GridListTileBar, 
-  makeStyles,
-  Typography
-} from "@material-ui/core";
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { createStyles, GridList, GridListTile, GridListTileBar, makeStyles, Typography } from '@material-ui/core';
 
-import { showLoading, hideLoading } from "../../core/components/loading/loadingSlice";
-import { addPokemon, selectMyPokemonsState } from "../myPokemons/myPokemonSlice";
-import { getPokemon } from "../../core/axios/axios";
+import { showLoading, hideLoading } from '../../core/components/loading/loadingSlice';
+import { addPokemon, selectMyPokemonsState } from '../myPokemons/myPokemonSlice';
+import { getPokemon } from '../../core/axios/axios';
 
-import { initialTileData } from "./TileData";
-import { mapInterfaces } from "./mapInterfaces";
-import { ITileData } from "../../interfaces/ITileData";
-import { IPokemon } from "../../interfaces/IPokemon";
-import { IPokemonGrid } from "../../interfaces/IPokemonGrid";
+import { initialTileData } from './TileData';
+import { mapInterfaces } from './mapInterfaces';
+import { ITileData } from '../../interfaces/ITileData';
+import { IPokemon } from '../../interfaces/IPokemon';
+import { IPokemonGrid } from '../../interfaces/IPokemonGrid';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -30,35 +23,35 @@ const useStyles = makeStyles(() =>
     },
     title: { textAlign: 'center', margin: 30 },
     gridList: { width: 730 },
-    gridItem: { cursor: 'pointer' }
+    gridItem: { cursor: 'pointer' },
   }),
 );
 
-const Actions = () => {
-  const [tileData] = useState<Array<ITileData>>(initialTileData);
-  const [redirect, setRedirect] = useState<string>("");
+const Actions = (): JSX.Element => {
+  const [tileData] = useState<ITileData[]>(initialTileData);
+  const [redirect, setRedirect] = useState<string>('');
   const pokeRows = useSelector(selectMyPokemonsState);
   const classes = useStyles();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchPokemons = async (arr: Array<{id: number}>) => {
+    const fetchPokemons = async (arr: Array<{ id: number }>) => {
       dispatch(showLoading());
       for (const poke of arr) {
-        const pokemon: IPokemon = await getPokemon(poke.id);  
+        const pokemon: IPokemon = await getPokemon(poke.id);
         const pokegrid: IPokemonGrid = mapInterfaces(pokemon);
         dispatch(addPokemon(pokegrid));
       }
       dispatch(hideLoading());
     };
-    
-    const memoryStr: string = window.localStorage.getItem("Memory Card") || "";
+
+    const memoryStr: string = window.localStorage.getItem('Memory Card') || '';
     if (memoryStr && pokeRows.length === 0) {
       const memoryCard = JSON.parse(memoryStr);
       fetchPokemons(memoryCard.pokemonList);
     } else {
       if (pokeRows.length > 0) return;
-      setRedirect("/newgame");  
+      setRedirect('/newgame');
     }
   }, [pokeRows, dispatch]);
 
@@ -67,16 +60,11 @@ const Actions = () => {
   };
 
   if (redirect) {
-    return <Redirect to={redirect} />
+    return <Redirect to={redirect} />;
   } else {
-
     return (
       <div>
-        <Typography
-          color="secondary"
-          variant="h5"
-          className={classes.title}
-        >
+        <Typography color="secondary" variant="h5" className={classes.title}>
           What are you going to do next?
         </Typography>
         <div className={classes.root}>
@@ -89,10 +77,7 @@ const Actions = () => {
                 onClick={() => handleClick(tile.page)}
               >
                 <img src={tile.img} alt={tile.title} />
-                <GridListTileBar
-                  title={tile.title}
-                  subtitle={tile.subtitle}
-                />
+                <GridListTileBar title={tile.title} subtitle={tile.subtitle} />
               </GridListTile>
             ))}
           </GridList>

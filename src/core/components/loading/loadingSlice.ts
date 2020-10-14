@@ -1,6 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
-import { RootState } from "../../../app/store";
+import { RootState } from '../../../app/store';
 
 interface LoadingState {
   loadingOpened: boolean;
@@ -11,7 +11,7 @@ const initialState: LoadingState = {
 };
 
 export const loadingSlice = createSlice({
-  name: "loading",
+  name: 'loading',
   initialState,
   reducers: {
     showLoading: (state) => {
@@ -25,6 +25,6 @@ export const loadingSlice = createSlice({
 
 export const { showLoading, hideLoading } = loadingSlice.actions;
 
-export const selectLoadingState = (state: RootState) => state.loading.loadingOpened;
+export const selectLoadingState = (state: RootState): boolean => state.loading.loadingOpened;
 
 export default loadingSlice.reducer;
